@@ -6,11 +6,11 @@ import notype.type.TypeBind;
 public abstract class Expression {
 
     public TypeBind bind;
-    public abstract Type type();
+    public abstract Type rawType();
     public abstract Context resolve(Context context);
 
-    public Type resolvedType() {
-        return type().resolve(bind);
+    public Type type() {
+        return rawType().resolve(bind);
     }
 
 }

@@ -26,7 +26,7 @@ public class DefineTypeResolver implements TypeResolver {
             if (c == null)
                 return null;
             form.type = MonoType.VOID;
-            return context.add(variable, value.type());
+            return context.add(variable, value.rawType());
         default:
             throw new ExpressionSyntaxException("syntax: 'define VAR [VAL]'");
         }

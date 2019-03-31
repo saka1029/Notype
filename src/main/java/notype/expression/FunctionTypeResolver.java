@@ -27,7 +27,7 @@ public class FunctionTypeResolver implements TypeResolver {
             context = arg.resolve(context);
             if (context == null)
                 return null;
-            context = context.unify(arg.type(), argType);
+            context = context.unify(arg.rawType(), argType);
             if (context == null)
                 return null;
         }

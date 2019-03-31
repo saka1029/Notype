@@ -9,7 +9,7 @@ public class ProgTypeResolver implements TypeResolver {
             context = arg.resolve(context);
             if (context == null)
                 return null;
-            form.type = arg.type();
+            form.type = arg.rawType();
         }
         for (int i = 0; i < form.size(); ++i)
             form.get(i).bind = context.bind;

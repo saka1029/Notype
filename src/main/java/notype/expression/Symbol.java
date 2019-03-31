@@ -21,12 +21,12 @@ public class Symbol extends Expression {
 
     @Override
     public String toString() {
-        Type t = type();
+        Type t = rawType();
         return t == null ? name : name + ":" + t;
     }
 
     @Override
-    public Type type() {
+    public Type rawType() {
         if (definition == null)
             return null;
         return definition.type;

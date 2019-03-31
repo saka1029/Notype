@@ -43,9 +43,9 @@ class TestExpression {
         assertNotNull(result);
         System.out.println(expression);
         System.out.println(expression.bind);
-        assertEquals(INT, expression.resolvedType());
+        assertEquals(INT, expression.type());
         for (int i = 1; i < expression.size(); ++i)
-            assertEquals(INT, expression.get(i).resolvedType());
+            assertEquals(INT, expression.get(i).type());
     }
 
     @Test
@@ -60,9 +60,9 @@ class TestExpression {
         assertNotNull(result);
         System.out.println(expression);
         System.out.println(expression.bind);
-        assertEquals(INT, expression.resolvedType());
-        assertEquals(BOOLEAN, expression.get(1).resolvedType());
-        assertEquals(INT, expression.get(2).resolvedType());
+        assertEquals(INT, expression.type());
+        assertEquals(BOOLEAN, expression.get(1).type());
+        assertEquals(INT, expression.get(2).type());
         assertEquals(INT, context.local.get(sym("x")).type.resolve(expression.bind));
     }
 
@@ -87,10 +87,10 @@ class TestExpression {
         assertNotNull(result);
         System.out.println(expression);
         System.out.println(expression.bind);
-        assertEquals(STRING, expression.resolvedType());
-        assertEquals(INT, expression.get(1).resolvedType());
-        assertEquals(STRING, expression.get(2).resolvedType());
-        assertEquals(STRING, expression.get(3).resolvedType());
+        assertEquals(STRING, expression.type());
+        assertEquals(INT, expression.get(1).type());
+        assertEquals(STRING, expression.get(2).type());
+        assertEquals(STRING, expression.get(3).type());
     }
 
     @Test
@@ -117,12 +117,12 @@ class TestExpression {
         assertNotNull(result);
         System.out.println(expression);
         System.out.println(expression.bind);
-        assertEquals(STRING, expression.resolvedType());
-        assertEquals(VOID, expression.get(1).resolvedType());
-        assertEquals(VOID, expression.get(2).resolvedType());
-        assertEquals(INT, expression.get(3).resolvedType());
-        assertEquals(STRING, expression.get(4).resolvedType());
-        assertEquals(STRING, expression.get(5).resolvedType());
+        assertEquals(STRING, expression.type());
+        assertEquals(VOID, expression.get(1).type());
+        assertEquals(VOID, expression.get(2).type());
+        assertEquals(INT, expression.get(3).type());
+        assertEquals(STRING, expression.get(4).type());
+        assertEquals(STRING, expression.get(5).type());
     }
 
 }

@@ -25,7 +25,7 @@ public class Form extends Expression {
     }
 
     @Override
-    public Type type() {
+    public Type rawType() {
         return type;
     }
 
@@ -49,7 +49,7 @@ public class Form extends Expression {
                 return c;
             }
         }
-        return null;
+        throw new ExpressionSyntaxException("undefined function: " + functor);
     }
 
 }

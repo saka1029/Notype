@@ -19,7 +19,7 @@ public class Literal extends Expression {
     }
 
     @Override
-    public Type type() {
+    public Type rawType() {
         return type;
     }
 
