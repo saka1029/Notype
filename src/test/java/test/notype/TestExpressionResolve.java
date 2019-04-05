@@ -14,7 +14,7 @@ import notype.expression.FunctionTypeResolver;
 import notype.expression.Literal;
 import notype.expression.ProgTypeResolver;
 import notype.expression.Symbol;
-import notype.type.MonoType;
+import notype.type.FunctionType;
 
 class TestExpressionResolve {
 
@@ -32,7 +32,7 @@ class TestExpressionResolve {
         Context c = new Context()
             .add(sym("prog"), new ProgTypeResolver())
             .add(sym("define"), new DefineTypeResolver())
-            .add(sym("+"), new FunctionTypeResolver(new MonoType("function", INT, INT, INT)))
+            .add(sym("+"), new FunctionTypeResolver(new FunctionType(INT, INT, INT)))
             ;
         Form f = (Form)read("(prog (define x 1) (+ x 2))");
         Context cc = f.resolve(c);

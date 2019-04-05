@@ -14,7 +14,7 @@ import notype.expression.FunctionTypeResolver;
 import notype.expression.Literal;
 import notype.expression.ProgTypeResolver;
 import notype.expression.Symbol;
-import notype.type.MonoType;
+import notype.type.FunctionType;
 import notype.type.VariableType;
 
 class TestExpression {
@@ -37,7 +37,7 @@ class TestExpression {
         Context context = new Context()
             .add(sym("x"))
             .add(sym("y"))
-            .add(sym("+"), new FunctionTypeResolver(new MonoType("function", INT, INT, INT)));
+            .add(sym("+"), new FunctionTypeResolver(new FunctionType(INT, INT, INT)));
         Form expression = form(sym("+"), x, y);
         Context result = expression.resolve(context);
         assertNotNull(result);
@@ -54,7 +54,7 @@ class TestExpression {
         Context context = new Context()
             .add(sym("x"))
             .add(sym("if"), new FunctionTypeResolver(
-                new MonoType("function", v, BOOLEAN, v, v)));
+                new FunctionType(v, BOOLEAN, v, v)));
         Form expression = form(sym("if"), lit(true), lit(1), sym("x"));
         Context result = expression.resolve(context);
         assertNotNull(result);
@@ -74,9 +74,9 @@ class TestExpression {
         Context context = new Context()
             .add(sym("x"))
             .add(sym("y"))
-            .add(sym("set"), new FunctionTypeResolver(new MonoType("function", X, X, X)))
-            .add(sym("+"), new FunctionTypeResolver(new MonoType("function", INT, INT, INT)))
-            .add(sym("+"), new FunctionTypeResolver(new MonoType("function", STRING, STRING, STRING)))
+            .add(sym("set"), new FunctionTypeResolver(new FunctionType(X, X, X)))
+            .add(sym("+"), new FunctionTypeResolver(new FunctionType(INT, INT, INT)))
+            .add(sym("+"), new FunctionTypeResolver(new FunctionType(STRING, STRING, STRING)))
             .add(sym("prog"), new ProgTypeResolver());
         Form expression = new Form(sym("prog"),
             form(sym("set"), sym("x"), form(sym("+"), x, lit(1))),
@@ -101,9 +101,9 @@ class TestExpression {
         Context context = new Context()
 //            .add(sym("x"))
 //            .add(sym("y"))
-            .add(sym("set"), new FunctionTypeResolver(new MonoType("function", X, X, X)))
-            .add(sym("+"), new FunctionTypeResolver(new MonoType("function", INT, INT, INT)))
-            .add(sym("+"), new FunctionTypeResolver(new MonoType("function", STRING, STRING, STRING)))
+            .add(sym("set"), new FunctionTypeResolver(new FunctionType(X, X, X)))
+            .add(sym("+"), new FunctionTypeResolver(new FunctionType(INT, INT, INT)))
+            .add(sym("+"), new FunctionTypeResolver(new FunctionType(STRING, STRING, STRING)))
             .add(sym("define"), new DefineTypeResolver())
             .add(sym("prog"), new ProgTypeResolver());
         Form expression = new Form(sym("prog"),

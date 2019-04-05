@@ -6,6 +6,7 @@ import java.util.HashMap;
 
 import org.junit.jupiter.api.Test;
 
+import notype.type.FunctionType;
 import notype.type.MonoType;
 import notype.type.Type;
 import notype.type.VariableType;
@@ -14,7 +15,7 @@ class TestCopy {
 
     static MonoType INT = new MonoType("int");
     static MonoType BOOL = new MonoType("boolean");
-    static MonoType PLUS = new MonoType("function", INT, INT, INT);
+    static FunctionType PLUS = new FunctionType(INT, INT, INT);
     static VariableType X = new VariableType("X");
 
     @Test
