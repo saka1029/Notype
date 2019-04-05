@@ -18,6 +18,16 @@ public class DefunTypeResolver implements TypeResolver {
             types[i] = new VariableType();
         MonoType funType = new MonoType("function", types);
         context = context.add((Symbol)formal.get(0), funType);
+        for (int i = 2; i < form.size(); ++i) {
+            Expression arg = form.get(i);
+            context = arg.resolve(context);
+            if (context == null)
+                return null;
+//            form.type = arg.rawType();
+        }
+        for (int i = 0; i < form.size(); ++i)
+            form.get(i).bind = context.bind;
+        form.type = MonoType.VOID;
         return context;
     }
 
