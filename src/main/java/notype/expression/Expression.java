@@ -10,7 +10,8 @@ public abstract class Expression {
     public abstract Context resolve(Context context);
 
     public Type type() {
-        return rawType().resolve(bind);
+        Type raw = rawType();
+        return raw == null ? null : raw.resolve(bind);
     }
 
 }
