@@ -36,6 +36,7 @@ class TestDefunTypeResolver {
         assertEquals(VOID, form.get(1).rawType());
         assertEquals(VOID, form.get(2).rawType());
         assertEquals(INT, form.get(3).rawType());
+
     }
 
 }
