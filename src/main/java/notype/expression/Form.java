@@ -30,11 +30,6 @@ public class Form extends Expression {
     }
 
     @Override
-    public String toString() {
-        return Arrays.toString(arguments);
-    }
-
-    @Override
     public Context resolve(Context context) {
         if (size() <= 0)
             throw new ExpressionSyntaxException("empty list");
@@ -50,6 +45,11 @@ public class Form extends Expression {
             }
         }
         throw new ExpressionSyntaxException("undefined function: " + functor);
+    }
+
+    @Override
+    public String toStringSimple() {
+        return Arrays.toString(arguments);
     }
 
 }

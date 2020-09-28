@@ -32,6 +32,7 @@ class TestDefunTypeResolver {
             .add(new Symbol("+"), new FunctionTypeResolver(new FunctionType(INT, INT, INT)))
             ;
         Context c = form.resolve(context);
+        System.out.println(form);
         assertNotNull(c);
         assertEquals(VOID, form.get(1).rawType());
         assertEquals(VOID, form.get(2).rawType());

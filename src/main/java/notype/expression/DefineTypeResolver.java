@@ -15,20 +15,23 @@ public class DefineTypeResolver implements TypeResolver {
     public Context resolve(Context context, Form form) {
         Symbol variable;
         switch (form.size()) {
-        case 2:
+        case 2: // define VARIABLE
             variable = variable(form);
             form.type = MonoType.VOID;
             return context.add(variable);
-        case 3:
+        case 3: // define VARIABLE EXPRESSION
             variable = variable(form);
             Expression value = form.get(2);
-            Context c = value.resolve(context);
-            if (c == null)
+            context = value.resolve(context);
+            if (context == null)
                 return null;
             form.type = MonoType.VOID;
-            return context.add(variable, value.rawType());
+            context = context.add(variable, value.rawType());
+            variable.bind = context.bind;
+            variable.definition = context.local;
+            return context;
         default:
-            throw new ExpressionSyntaxException("syntax: 'define VAR [VAL]'");
+            throw new ExpressionSyntaxException("syntax: 'define VARIABLE [EXPRESSION]'");
         }
     }
 

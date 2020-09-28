@@ -42,4 +42,9 @@ public class Context {
         return new Context(bind, local, reference.add(key, resolver));
     }
 
+    @Override
+    public String toString() {
+        return String.format("(bind=%s, local=%s, reference=%s)", bind, local, reference);
+    }
+
 }

@@ -5,17 +5,23 @@ import notype.type.Type;
 
 public class FunctionTypeResolver implements TypeResolver {
 
+    public final boolean copy;
     public final MonoType type;
 
-    public FunctionTypeResolver(MonoType type) {
+    public FunctionTypeResolver(MonoType type, boolean copy) {
         if (!type.name.equals("function"))
             throw new IllegalArgumentException("function type required but " + type);
+        this.copy = copy;
         this.type = type;
+    }
+
+    public FunctionTypeResolver(MonoType type) {
+        this(type, true);
     }
 
     @Override
     public Context resolve(Context context, Form form) {
-        MonoType type = (MonoType)this.type.copy();
+        MonoType type = copy ? (MonoType)this.type.copy() : this.type;
         int size = type.size();
         // form:(+ 1 2) args.size() = 3 (functor + args)
         // type:(function, INT, INT, INT) type.size() = 3 (return type + arg types)

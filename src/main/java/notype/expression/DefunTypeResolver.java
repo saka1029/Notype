@@ -23,7 +23,7 @@ public class DefunTypeResolver implements TypeResolver {
             context = context.add((Symbol)formal.get(i), v);
         }
         MonoType funType = new FunctionType(types);
-        context = context.add((Symbol)formal.get(0), new FunctionTypeResolver(funType));
+        context = context.add((Symbol)formal.get(0), new FunctionTypeResolver(funType, false));
         for (int i = 2; i < form.size(); ++i) {
             Expression arg = form.get(i);
             context = arg.resolve(context);

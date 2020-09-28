@@ -36,6 +36,7 @@ class TestExpressionResolve {
             ;
         Form f = (Form)read("(prog (define x 1) (+ x 2))");
         Context cc = f.resolve(c);
+        System.out.println(f);
         assertNotNull(cc);
         assertEquals(INT, f.type());
         assertEquals(VOID, f.get(1).type());

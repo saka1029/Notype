@@ -20,12 +20,6 @@ public class Symbol extends Expression {
     }
 
     @Override
-    public String toString() {
-        Type t = rawType();
-        return t == null ? name : name + ":" + t;
-    }
-
-    @Override
     public Type rawType() {
         if (definition == null)
             return null;
@@ -38,5 +32,10 @@ public class Symbol extends Expression {
         if (definition == null)
             return null;
         return context;
+    }
+
+    @Override
+    public String toStringSimple() {
+        return name;
     }
 }

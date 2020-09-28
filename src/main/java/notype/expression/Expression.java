@@ -14,4 +14,15 @@ public abstract class Expression {
         return raw == null ? null : raw.resolve(bind);
     }
 
+    public abstract String toStringSimple();
+
+    public String toString() {
+        String s = toStringSimple();
+        if (rawType() != null) {
+            s += ":" + rawType();
+            if (bind != TypeBind.ROOT)
+                s += "/" + bind;
+        }
+        return s;
+    }
 }

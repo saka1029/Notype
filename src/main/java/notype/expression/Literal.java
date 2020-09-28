@@ -24,7 +24,7 @@ public class Literal extends Expression {
     }
 
     @Override
-    public String toString() {
+    public String toStringSimple() {
         return value.toString() +
             (type == MonoType.LONG ? "L" :
             type == MonoType.BIG_INTEGER ? "I" :
